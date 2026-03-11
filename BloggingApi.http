@@ -1,0 +1,94 @@
+@BloggingApi_HostAddress = http://localhost:5194
+
+GET {{BloggingApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Get all posts
+GET http://localhost:7000/api/posts
+
+### Get a single post
+GET http://localhost:7000/api/posts/1
+
+### Create a new post
+POST http://localhost:7000/api/posts
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "title": "My First Blog Post",
+  "content": "This is the content of my first post.",
+  "userId": 1
+}
+
+### Update a post
+PUT http://localhost:7000/api/posts/1
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "title": "Updated Title",
+  "content": "Updated content."
+}
+
+### Delete a post
+DELETE http://localhost:7000/api/posts/1
+Authorization: Bearer {{JWT_TOKEN}}
+
+### Get comments for a post
+GET http://localhost:7000/api/comments/post/1
+
+### Add a comment
+POST http://localhost:7000/api/comments
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "content": "Nice post!",
+  "userId": 1,
+  "postId": 1
+}
+
+### Like a post
+POST http://localhost:7000/api/likes
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "userId": 1,
+  "postId": 1
+}
+
+### Unlike a post
+DELETE http://localhost:7000/api/likes/1
+Authorization: Bearer {{JWT_TOKEN}}
+
+### Follow a user
+POST http://localhost:7000/api/follows
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "followerId": 1,
+  "followingId": 2
+}
+
+### Unfollow a user
+DELETE http://localhost:7000/api/follows/1
+Authorization: Bearer {{JWT_TOKEN}}
+
+### Get user profile
+GET http://localhost:7000/api/users/1
+
+### Update user profile
+PUT http://localhost:7000/api/users/1
+Content-Type: application/json
+Authorization: Bearer {{JWT_TOKEN}}
+
+{
+  "bio": "I love blogging!",
+  "avatarUrl": "https://example.com/avatar.jpg"
+}
+
+### Get user feed
+GET http://localhost:7000/api/users/1/feed
+Authorization: Bearer {{JWT_TOKEN}}
